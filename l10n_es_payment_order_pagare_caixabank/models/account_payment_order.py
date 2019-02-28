@@ -72,8 +72,8 @@ class AccountPaymentOrder(models.Model):
 
     def _get_fecha_vencimiento(self, line):
         fecha_vencimiento = 8 * ' '
-        if line.ml_maturity_date:
-            fecha_vencimiento = line.ml_maturity_date.replace('-', '')
+        if line.date:
+            fecha_vencimiento = line.date.replace('-', '')
             dia = fecha_vencimiento[6:]
             mes = fecha_vencimiento[4:6]
             ano = fecha_vencimiento[0:4]
@@ -359,7 +359,7 @@ class AccountPaymentOrder(models.Model):
             ###################################################################
             if tipo_dato == '910':
                 # 30 - 37 Fecha vencimiento pagaré
-                text += self._get_fecha_vencimiento(payment_line)
+                text += self._get_fecha_vencimiento(line)
                 # 38 - 72: Libre
                 text += 35 * ' '
             ###################################################################
