@@ -66,7 +66,7 @@ class ConfirmingPopular(object):
             vat = self.order.mode.bank_id.partner_id.vat[2:]
             text += self.converter.convert(vat, 9)
             # 15 - 17 Sufijo
-            text += '001'
+            text += '000'
             # 18 -26 Libre
             text += 9 * ' '
             # 27 Numero del dato
