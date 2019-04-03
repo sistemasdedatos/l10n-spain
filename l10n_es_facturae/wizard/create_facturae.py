@@ -579,6 +579,8 @@ class CreateFacturae(models.TransientModel):
             texto += '<TaxCurrencyCode>' + invoice.currency_id.name +\
                      '</TaxCurrencyCode>'
             texto += '<LanguageName>es</LanguageName>'
+            texto += '<ReceiverTransactionReference>%s</ReceiverTransactionReference>' % invoice.name
+            texto += '<ReceiverContractReference>%s</ReceiverContractReference>' % invoice.name
             texto += '</InvoiceIssueData>'
             texto += _taxes_output()
             texto += _invoice_totals()
