@@ -72,7 +72,7 @@ class CreateFacturae(models.TransientModel):
         def _format_xml():
             # formato y definicion del fichero xml
             texto = '<fe:Facturae xmlns:fe=' \
-                    '"http://www.facturae.es/Facturae/2009/v3.2/Facturae" ' \
+                    '"http://www.facturae.gob.es/formato/Versiones/Facturaev3_2_2.xml" ' \
                     'xmlns:ds="http://www.w3.org/2000/09/xmldsig#">'
             return texto
 
@@ -111,7 +111,7 @@ class CreateFacturae(models.TransientModel):
 
             company_partner_obj = invoice.company_id.partner_id
 
-            schemaversion = '3.2'
+            schemaversion = '3.2.2'
             modality = 'I'
 
             if not invoice.number:
