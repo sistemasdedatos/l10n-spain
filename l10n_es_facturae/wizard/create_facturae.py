@@ -466,6 +466,8 @@ class CreateFacturae(models.TransientModel):
 
             for line in invoice.invoice_line:
                 texto += '<InvoiceLine>'
+                texto += '<ReceiverTransactionReference>%s</ReceiverTransactionReference>' % invoice.name
+                texto += '<ReceiverContractReference>%s</ReceiverContractReference>' % invoice.name
                 texto += '<ItemDescription>' + line.name + '</ItemDescription>'
                 texto += '<Quantity>' + str(line.quantity) + '</Quantity>'
                 texto += '<UnitPriceWithoutTax>'
@@ -579,8 +581,6 @@ class CreateFacturae(models.TransientModel):
             texto += '<TaxCurrencyCode>' + invoice.currency_id.name +\
                      '</TaxCurrencyCode>'
             texto += '<LanguageName>es</LanguageName>'
-            texto += '<ReceiverTransactionReference>%s</ReceiverTransactionReference>' % invoice.name
-            texto += '<ReceiverContractReference>%s</ReceiverContractReference>' % invoice.name
             texto += '</InvoiceIssueData>'
             texto += _taxes_output()
             texto += _invoice_totals()
