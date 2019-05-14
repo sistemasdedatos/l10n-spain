@@ -9,7 +9,6 @@ import pytz
 import random
 import base64
 import hashlib
-import urllib2
 import logging
 
 try:
@@ -353,12 +352,7 @@ class AccountInvoice(models.Model):
                     'Algorithm': 'http://www.w3.org/2000/09/xmldsig#sha1'
                 }
             )
-            try:
-                remote = urllib2.urlopen(sig_policy_identifier)
-                hash_value = base64.b64encode(
-                    hashlib.sha1(remote.read()).digest())
-            except urllib2.HTTPError:
-                hash_value = sig_policy_hash_value
+            hash_value = sig_policy_hash_value
             etree.SubElement(
                 sig_policy_hash,
                 etree.QName(xmlsig.constants.DSigNs, 'DigestValue')
